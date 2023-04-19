@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+
+
+
+*{
+  margin: 0;
+  border: 0;
+}
+
+
+
+h1{
+  text-align: center;
+  font-size: 25px;
+  padding-bottom: 40px;
+  margin-top: 10px;
+  text-shadow: 2px 4px 4px rgba(46,91,173,0.6);
+  font-family: 'Aboreto', cursive;}
+
+h2{
+  color: #033c8c;
+  font-family: 'Anuphan', sans-serif;
+}
+.main-container{
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  /* margin-left: 50px; */
+  position: absolute;
+  left: 90px;
+  top: 90px;
+  background-color: rgba(193, 209, 247, 0.627);
+  
+}
+
+.container {
+  width: 1350px;
+  height: auto;
+  
+  
+  
+}
+
+.background{
+  background-image: url('titlebg.png');
+  opacity: 0.9;
+  background-size: 400px;
+  background-repeat: no-repeat;
+  height: 500px;
+  position: relative;
+  margin-left: 550px;
+  margin-top: 150px;
+  width: 50%;
+  position: fixed;
+}
+
+.first_box, .third_box{
+  border: 2px solid black;
+  border: none;
+  display: flex;
+  gap: 500px;
+  padding: 10px;
+}
+
+#dates_1st{
+  margin-left: 100px;
+  font-size: 30px;
+  font-family: 'Dongle', sans-serif;
+  
+}
+
+#dates{
+  height: 20px;
+  width: 250px;
+}
+
+#name{
+  width: 180px;
+  height: 25px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+select{
+  background-color:rgb(255, 255, 255)
+}
+
+#rank{
+  margin-top: 12px;
+}
+
+#sessions{
+  margin-top: 10px;
+}
+
+.second_box_heading{
+  height: 40px;
+  margin-top: 10px;
+}
+
+.second_box_heading_row{
+  margin-left: 105px;
+  margin-top: 50px;
+  font-size: 30px;
+  font-family: 'Dongle', sans-serif;
+}
+
+.fourth_box{
+  height: 40px;
+  
+}
+
+.fourth_box_row{
+  margin-left: 105px;
+  font-size: 20px;
+  font-size: 30px;
+  font-family: 'Dongle', sans-serif;
+}
+
+.fourth_box_row_sessions{
+  margin-left: 58px;
+}
+
+.fourth_box_row_strength{
+  margin-left: 73px;
+}
+
+
+.fifth_box{
+  border: 2px solid black;
+  border: none;
+  height: 40px;
+
+}
+
+.sixth_box{
+  margin-top: 10px;
+}
+
+.subject_name{
+  font-size: 30px;
+  font-family: 'Dongle', sans-serif;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 110px;
+}
+#subject{
+  width: 315px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.subject_select{
+  margin-top: 20px;
+  
+}
+
+#third_h2{
+  margin-left: 10px;
+  margin-top: 30px;
+}
+
+
+
+
+.firstrating {
+  display: inline-block;
+  font-size: 50px;
+}
+
+.star {
+  cursor: pointer;
+  color: #ffffff;
+  transition: color 0.3s;
+
+}
+
+.star:hover,
+.star.active {
+  color: #ffbc05;
+}
+
+.seventh_box{
+  display: flex;
+  margin-top: 50px;
+  margin-left: 120px;
+  font-size: 25px;
+  font-family: 'Dongle', sans-serif;
+}
+
+h3{
+  margin-top: 10px;
+}
+
+.firstrating{
+  margin-left: 50px;
+  width: 200px;
+}
+
+#secrating{
+  margin-left: 80px;
+}
+
+.ratingforrows{
+  display: flex;
+  margin-left: 500px;
+}
+
+.rating_for_rows_class{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+#submit{
+  height: 50px;
+  width: 120px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #ddd;
+  box-shadow: 0 8px 8px -4px rgb(90, 214, 255);
+  font-weight: bold;
+}
+
+#submit:hover{
+  background-color: #ffbc05;
+  margin-left: 10px;
+  color: white;
+  transition: 0.9;
+
+}
+
+.submit_value{
+  padding: 50px;
+  margin-left: 920px;
+  
+}
+
+.about{
+  position: absolute;
+  right: 0;
+  padding: 30px;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  text-shadow: 2px 4px 4px rgba(46,91,173,0.6);
+
+}
+
+
+input[type="text"] {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  padding: 5px;
+}

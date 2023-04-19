@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="/static/titlebg.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Feedback Report | CGTC</title>
+</head>
+<body>
+<div class="background"></div>
+<div class="main-container container">
+  <h1> <u>INSTRUCTOR EVALUATION BY TRAINEES</u></h1>
+
+  <div class="first_box"> 
+    <h2> Instructor's Particulars: </h2>
+    <form action="/submit-feedback" method="post">
+    <label id="dates_1st" for="dates">Dates of the session: </label>
+    <input type="text" id="dates" name="dates" placeholder="From: DD/MM/YY - To: DD/MM/YY" required>
+  </div>
+
+  <div class="second_box_heading">
+      <label for="name" class="second_box_heading_row"> <b> Name of the Instructor: </b></label>
+      <select id="name" name="name" onchange="updateRankAndNumber()">
+        <option value="">Select your Instructor</option>
+        <option value="John">John</option>
+        <option value="Mary">Mary</option>
+        <option value="Tom">Tom</option>
+     </select>
+
+      <label class="second_box_heading_row" for="rank"><b>Rank / Civilian (CV): </b></label>
+      <input type="text" id="rank" name="rank" class="rank_input" readonly>
+
+      <label class="second_box_heading_row" for="Pno"><b>PNo: </b> </label>
+      <input type="text" id="Pno" name="Pno" class="rank_input pno_input" readonly>
+  
+  </div>
+
+  <div class="third_box">
+    <h2>Class Particulars:</h2>
+  </div>
+
+  <div class="fourth_box">
+    <label class="fourth_box_row" for="class_name"><b>Name of the Class/Course: </b></label>
+    <input type="text" id="class_name" placeholder="  --Class/Course Name--" class="class_input" name="class_name" required>
+
+    <label class="fourth_box_row fourth_box_row_sessions" id="sessions" for="sessions"><b>Session count: </b></label>
+    <input type="text" id="sessions" class="sessions_input" placeholder="      --Session count--" name="sessions" required>
+
+    <label class="fourth_box_row fourth_box_row_strength" id="strength" for="strength"><b>Strength of class: </b></label>
+    <input type="text" id="strength" class="strength_input" placeholder="      --Total Strength--" name="strength" required>
+  </div>
+
+  <div class="fifth_box">
+    <label for="subject" class="subject_name"> Subject: </label>
+    <select class="subject_select" name="subject" id="subject" onchange="updateInfo()">
+          <option value=""> <nbsp/>--Select your Subject--</option>
+          <option value="John">Data Science</option>
+          <option value="Jane">Artificial Intelligence</option>
+          <option value="Bob">Machine Learning</option>
+    </select>
+  </div>
+
+  <div class="sixth_box">
+    <h2 id="third_h2">Grade the Instructors presentation as per the values mentioned against each:</h2>
+  </div>
+
+  <div class="seventh_box">
+    <label> <h3> 1. Initiation / Introduction of Lesson: </h3> </label><br>
+    <div class="firstrating">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating1" value=""><br><br>
+  </div>
+
+  <div class="seventh_box">
+    <label> <h3> 2. Check of previous knowledge : </h3> </label><br>
+    <div class="firstrating" id="secrating">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating2" value=""><br><br>
+  </div>
+
+
+  <div class="seventh_box rating_for_rows_class">
+    <h3> 3. Communication Skill : </h3> 
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(a) Language: </h4></label>
+          <div class="firstrating" style="margin-left: 105px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating3" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(b) Pronunciation: </h4></label>
+          <div class="firstrating" style="margin-left: 70px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating4" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(c) Fluency: </h4></label>
+          <div class="firstrating" style="margin-left: 125px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating5" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(d) Clarity: </h4></label>
+          <div class="firstrating" style="margin-left: 135px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating6" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(e) Voice Modulation: </h4></label>
+          <div class="firstrating" style="margin-left: 45px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating7" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(f) Rate of Delivery: </h4></label>
+          <div class="firstrating" style="margin-left: 60px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating8" value=""><br><br>
+
+      </div>
+
+
+
+  </div>
+
+
+  
+
+
+
+  <div class="seventh_box rating_for_rows_class">
+    <h3> 4. Development of Subject : </h3> 
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(a) Subject Knowledge: </h4></label>
+          <div class="firstrating" style="margin-left: 110px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating9" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(b) Relevance to objectives: </h4></label>
+          <div class="firstrating" style="margin-left: 72px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating10" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(c) Logical Flow: </h4></label>
+          <div class="firstrating" style="margin-left: 170px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating11" value=""><br><br>
+
+      </div>
+
+
+  </div>
+
+
+
+
+  <div class="seventh_box rating_for_rows_class">
+    <h3> 5. Training Aids : </h3> 
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(a) Quality: </h4></label>
+          <div class="firstrating" style="margin-left: 205px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating12" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(b)Appropriateness: </h4></label>
+          <div class="firstrating" style="margin-left: 130px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating13" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(c) Effectiveness: </h4></label>
+          <div class="firstrating" style="margin-left: 155px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating14" value=""><br><br>
+
+      </div>
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(d) Utilization Techniques: </h4></label>
+          <div class="firstrating" style="margin-left: 80px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating15" value=""><br><br>
+
+      </div>
+
+
+  </div>
+  
+
+
+
+
+
+  
+
+
+
+  <div class="seventh_box">
+    <label> <h3> 6. Questioning Technique: </h3> </label><br>
+    <div class="firstrating" style="margin-left: 120px;">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating16" value=""><br><br>
+  </div>
+
+
+
+  <div class="seventh_box">
+    <label> <h3> 7. Interaction with trainees: </h3> </label><br>
+    <div class="firstrating" style="margin-left: 100px;">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating17" value=""><br><br>
+  </div>
+
+
+
+  <div class="seventh_box">
+    <label> <h3> 8. Lesson Summarization: </h3> </label><br>
+    <div class="firstrating" style="margin-left: 120px;">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating18" value=""><br><br>
+  </div>
+
+
+
+  <div class="seventh_box">
+    <label> <h3> 9. Assesment of knowledge gained: </h3> </label><br>
+    <div class="firstrating" style="margin-left: 40px;">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating19" value=""><br><br>
+  </div>
+
+
+
+  <div class="seventh_box">
+    <label> <h3> 10. Time management: </h3> </label><br>
+    <div class="firstrating" style="margin-left: 145px;">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating20" value=""><br><br>
+  </div>
+
+  <div class="seventh_box">
+    <label> <h3> 11. Class management: </h3> </label><br>
+    <div class="firstrating" style="margin-left: 148px;">
+      <span class="star" data-rating="1">&#9733;</span>
+      <span class="star" data-rating="2">&#9733;</span>
+      <span class="star" data-rating="3">&#9733;</span>
+      <span class="star" data-rating="4">&#9733;</span>
+      <span class="star" data-rating="5">&#9733;</span>
+    </div>
+    <input type="hidden" name="rating21" value=""><br><br>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="seventh_box rating_for_rows_class">
+    <h3> 12. Instructor Personality : </h3> 
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(a) Turnout: </h4></label>
+          <div class="firstrating" style="margin-left: 100px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating22" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(b) Mannerism: </h4></label>
+          <div class="firstrating" style="margin-left: 72px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating23" value=""><br><br>
+
+      </div>
+
+
+      <div style="display: flex;" class="rating_for_rows">
+        <label> <h4 style="margin-left: 200px; font-size: 30px; margin-top: 12px;">(c) Outlook: </h4></label>
+          <div class="firstrating" style="margin-left: 100px;" id="secrating">
+            <span class="star" data-rating="1">&#9733;</span>
+            <span class="star" data-rating="2">&#9733;</span>
+            <span class="star" data-rating="3">&#9733;</span>
+            <span class="star" data-rating="4">&#9733;</span>
+            <span class="star" data-rating="5">&#9733;</span>
+          </div>
+      <input type="hidden" name="rating24" value=""><br><br>
+
+      </div>
+
+
+  </div>
+
+ <div class="submit_value"> <input type="submit" value="Submit" id="submit"></div>
+</form>
+
+<p class="about">Developed and Designed by <br> <b> N Sai Akhil, Nvk (R), ICGS Abhinav </b></p>
+
+
+<script>
+
+// OPTIONAL SELECT NAME 
+
+function updateRankAndNumber() {
+    const name = document.getElementById("name").value;
+    let rank, number;
+    switch(name) {
+      case "John":
+        rank = "1st";
+        Pno = "123";
+        break;
+      case "Mary":
+        rank = "2nd";
+        Pno = "456";
+        break;
+      case "Tom":
+        rank = "3rd";
+        Pno = "789";
+        break;
+      default:
+        rank = "";
+        Pno = "";
+        break;
+    }
+    document.getElementById("rank").value = rank;
+    document.getElementById("Pno").value = Pno;
+  }
+
+
+
+
+
+
+
+    // Rating stars functionality
+    const ratings = document.querySelectorAll('.firstrating');
+
+    function setRating(index, value) {
+      const stars = ratings[index].querySelectorAll('.star');
+      stars.forEach((star, i) => {
+        if (i < value) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+      const ratingInput = ratings[index].nextElementSibling;
+      ratingInput.value = value;
+    }
+
+    ratings.forEach((firstrating, index) => {
+      const stars = firstrating.querySelectorAll('.star');
+      stars.forEach((star, i) => {
+        star.addEventListener('click', () => {
+          setRating(index, i + 1);
+        });
+      });
+    });
+
+</script>
+</body>
+</html>
